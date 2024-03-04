@@ -1,5 +1,6 @@
 package Clases;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.spi.LocaleServiceProvider;
 
@@ -7,38 +8,35 @@ public abstract class EventoDeportivo implements Ganador{
 
     //ATRIBUTOS DE CLASE
     private String nombre;
-    private LocaleServiceProvider fecha;
+    private LocalDateTime fecha;
     private String lugar;
     private ArrayList<Participante> participantes;
 
     //CONSTRUCTOR DE CLASE
-    public EventoDeportivo(String nombre, LocaleServiceProvider fecha, String lugar, ArrayList<Participante> participantes) {
+    public EventoDeportivo(String nombre, LocalDateTime fecha, String lugar, ArrayList<Participante> participantes) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
-        this.participantes = new ArrayList<>();
+        this.participantes = participantes;
     }
 
 
 
     //METODOS DE CLASE
     @Override
-    public void obtenerGanador(Participante participante) {
-        System.out.println("El ganador es " +participante.getNombre()+ " " +participante.getApellidos());
-    }
+    public abstract ArrayList<Participante> obtenerGanador();
 
     public boolean inscribirParticipante(Participante participante) {
-        boolean participanteExiste = true;
         for (int i = 0; i < participantes.size(); i++) {
-            if (!participante.getDni().equals(participantes.get(i).getDni())){
-                participanteExiste = false;
-                participantes.add(participante);
-                System.out.println("Participante inscrito");
-            }else {
-                System.out.println("Este participante ya esta inscrito");
+            if (participante.getDni().equals(participantes.get(i).getDni())) {
+                System.out.println("Este participante ya estÃ¡ inscrito.");
+                return false;
             }
         }
-        return participanteExiste;
+
+        participantes.add(participante);
+        System.out.println("Participante inscrito.");
+        return true;
     }
 
     //GETTERS AND SETTERS
@@ -50,11 +48,11 @@ public abstract class EventoDeportivo implements Ganador{
         this.nombre = nombre;
     }
 
-    public LocaleServiceProvider getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocaleServiceProvider fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

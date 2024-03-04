@@ -1,5 +1,6 @@
 package Clases;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.spi.LocaleServiceProvider;
 
@@ -9,7 +10,7 @@ public class TorneoDeFutbol extends EventoDeportivo{
     private ArrayList<Equipo> equipos;
 
     //CONSTRUCTOR DE CLASE
-    public TorneoDeFutbol(String nombre, LocaleServiceProvider fecha, String lugar, ArrayList<Participante> participantes, ArrayList<Equipo> equipos) {
+    public TorneoDeFutbol(String nombre, LocalDateTime fecha, String lugar, ArrayList<Participante> participantes, ArrayList<Equipo> equipos) {
         super(nombre, fecha, lugar, participantes);
         this.equipos = new ArrayList<Equipo>();
     }
@@ -28,4 +29,38 @@ public class TorneoDeFutbol extends EventoDeportivo{
         }
         return equipoExiste;
     }
+
+    @Override
+    public ArrayList<Participante> obtenerGanador() {
+        if (equipos.isEmpty()) {
+            System.out.println("No hay equipos inscritos en el torneo.");
+            return new ArrayList<>(); // Devolver una lista vacÃ­a en este caso
+        }
+
+        // Encontrar el equipo con la mayor cantidad de puntos
+        Equipo equipoGanador = encontrarEquipoGanador();
+
+        if (equipoGanador != null) {
+            System.out.println("El equipo ganador del torneo es: " + equipoGanador.getNombre());
+            return equipoGanador.getJugadores();
+        } else {
+            System.out.println("No se pudo determinar el ganador del torneo.");
+            return new ArrayList<>(); // Devolver una lista vacÃ­a en este caso
+        }
+    }
+
+    private Equipo encontrarEquipoGanador() {
+        Equipo equipoGanador = null;
+        int maxPuntos = Integer.MIN_VALUE;
+
+        for (Equipo equipo : equipos) {
+            if (equipo.getPuntos() > maxPuntos) {
+                maxPuntos = equipo.getPuntos();
+                equipoGanador = equipo;
+            }
+        }
+
+        return equipoGanador;
+    }
 }
+

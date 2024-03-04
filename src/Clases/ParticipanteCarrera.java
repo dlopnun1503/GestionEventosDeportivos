@@ -3,7 +3,7 @@ package Clases;
 public class ParticipanteCarrera extends Participante{
 
     //ATRIBUTOS DE CLASE
-    private double tiempo;
+    private final double tiempo;
 
     //CONSTRUCTOR DE CLASE
     public ParticipanteCarrera(String dni, String nombre, String apellidos, int edad, double tiempo) {
@@ -14,9 +14,13 @@ public class ParticipanteCarrera extends Participante{
     //METODOS DE CLASE
     @Override
     public String toString(){
-        return "Hola me llamo " +getNombre()+ " " +getApellidos()+ " y tengo " +getEdad()+ " anios y he hecho un tiempo de " +this.tiempo;
+        return "Hola me llamo " +getNombre()+ " " +getApellidos()+ " y tengo " +getEdad()+ " anios y he hecho un tiempo de " +this.tiempo+" segundos.";
     }
 
     //GETTERS AND SETTERS
 
+    public double getTiempo() {
+        return tiempo;
+    }
 }
+

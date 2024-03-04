@@ -3,5 +3,6 @@ package Clases;
 import java.util.ArrayList;
 
 public interface Ganador {
-    public void obtenerGanador(Participante participante);
+    public ArrayList<Participante> obtenerGanador();
 }
+
