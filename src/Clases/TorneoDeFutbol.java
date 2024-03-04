@@ -12,43 +12,56 @@ public class TorneoDeFutbol extends EventoDeportivo{
     //CONSTRUCTOR DE CLASE
     public TorneoDeFutbol(String nombre, LocalDateTime fecha, String lugar, ArrayList<Participante> participantes, ArrayList<Equipo> equipos) {
         super(nombre, fecha, lugar, participantes);
-        this.equipos = new ArrayList<Equipo>();
+        this.equipos = equipos;
     }
 
     //METODOS DE CLASE
+
+    /**
+     * Método que inscribe un equipo a un torneo de fútbol.
+     * @param equipo El parámetro equipo define el equipo que será introducido en el ArrayList de equipos del torneo de fútbol.
+     * @return true si se ha podido ingresar correctamente el equipo | false si no se ha podido ingresar correctamente.
+     */
     public boolean inscribirEquipo(Equipo equipo) {
-        boolean equipoExiste = true;
+        boolean equipoExiste = false;
         for (int i = 0; i < equipos.size(); i++) {
-            if (!equipo.getNombre().equals(equipos.get(i).getNombre())){
-                equipoExiste = false;
-                equipos.add(equipo);
-                System.out.println("Equipo inscrito");
-            }else {
-                System.out.println("Este equipo ya esta inscrito");
+            if (equipo.getNombre().equals(equipos.get(i).getNombre())) {
+                equipoExiste = true;
+                System.out.println("Este equipo ya está inscrito");
+                break;
             }
         }
-        return equipoExiste;
+
+        if (!equipoExiste) {
+            equipos.add(equipo);
+            System.out.println("Equipo inscrito");
+        }
+
+        return !equipoExiste;
     }
 
     @Override
+    /**
+     * Método que muestra el nombre del equipo ganador.
+     * @return Jugadores del equipo ganador.
+     */
     public ArrayList<Participante> obtenerGanador() {
         if (equipos.isEmpty()) {
             System.out.println("No hay equipos inscritos en el torneo.");
-            return new ArrayList<>(); // Devolver una lista vacÃ­a en este caso
+            return new ArrayList<>();
         }
 
-        // Encontrar el equipo con la mayor cantidad de puntos
         Equipo equipoGanador = encontrarEquipoGanador();
 
-        if (equipoGanador != null) {
-            System.out.println("El equipo ganador del torneo es: " + equipoGanador.getNombre());
-            return equipoGanador.getJugadores();
-        } else {
-            System.out.println("No se pudo determinar el ganador del torneo.");
-            return new ArrayList<>(); // Devolver una lista vacÃ­a en este caso
-        }
+
+        System.out.println("El equipo ganador del torneo es: " + equipoGanador.getNombre());
+        return equipoGanador.getJugadores();
     }
 
+    /**
+     * Método que encuentra al equipo con más puntos.
+     * @return Equipo ganador.
+     */
     private Equipo encontrarEquipoGanador() {
         Equipo equipoGanador = null;
         int maxPuntos = Integer.MIN_VALUE;
@@ -63,4 +76,6 @@ public class TorneoDeFutbol extends EventoDeportivo{
         return equipoGanador;
     }
 }
+
+
 

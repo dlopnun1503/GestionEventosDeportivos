@@ -19,6 +19,10 @@ public class Carrera extends EventoDeportivo{
 
 
     @Override
+    /**
+     * Método que muestra el nombre del participante ganador.
+     * @return ArrayList de participantes con el ganador.
+     */
     public ArrayList<Participante> obtenerGanador() {
         // Comprobamos si hay participantes
         if (getParticipantes().isEmpty()) {

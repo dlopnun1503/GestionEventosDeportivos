@@ -24,8 +24,17 @@ public abstract class EventoDeportivo implements Ganador{
 
     //METODOS DE CLASE
     @Override
+    /**
+     * Método que mete en un array al ganador del evento.
+     * @return ArrayList<Participante> con el ganador.
+     */
     public abstract ArrayList<Participante> obtenerGanador();
 
+    /**
+     *
+     * @param participante
+     * @return
+     */
     public boolean inscribirParticipante(Participante participante) {
         for (int i = 0; i < participantes.size(); i++) {
             if (participante.getDni().equals(participantes.get(i).getDni())) {
@@ -37,6 +46,16 @@ public abstract class EventoDeportivo implements Ganador{
         participantes.add(participante);
         System.out.println("Participante inscrito.");
         return true;
+    }
+
+    @Override
+    /**
+     * Método toString que da detalles del EventoDeportivo.
+     * @return Cadena de caracteres con atributos.
+     */
+    public String toString() {
+        System.out.println("Nombre: "+this.nombre+". Fecha: "+this.fecha+". Lugar: "+this.lugar+". Participantes: "+this.participantes);
+        return null;
     }
 
     //GETTERS AND SETTERS

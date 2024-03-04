@@ -12,9 +12,14 @@ public class ParticipanteCarrera extends Participante{
     }
 
     //METODOS DE CLASE
+    /**
+     * Método toString que da detalles de la clase ParticipanteCarrera.
+     * @return Cadena de caracteres con atributos de la clase.
+     */
     @Override
     public String toString(){
-        return "Hola me llamo " +getNombre()+ " " +getApellidos()+ " y tengo " +getEdad()+ " anios y he hecho un tiempo de " +this.tiempo+" segundos.";
+        System.out.println("Hola me llamo " +getNombre()+ " " +getApellidos()+ " y tengo " +getEdad()+ " anios y he hecho un tiempo de " +this.tiempo+" segundos.");
+        return null;
     }
 
     //GETTERS AND SETTERS
@@ -23,4 +28,6 @@ public class ParticipanteCarrera extends Participante{
         return tiempo;
     }
 }
+
+
 

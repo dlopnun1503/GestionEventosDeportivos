@@ -18,11 +18,20 @@ public class Participante {
 
     //METODOS DE CLASE
     @Override
+    /**
+     * Método toString que da detalles de la clase Participante.
+     * @return Cadena de caracteres con atributos de la clase.
+     */
     public String toString(){
-        return "Hola me llamo " +this.nombre+ " " +this.apellidos+ " y tengo " +this.edad+ " anios";
+        System.out.println( "Hola me llamo " +this.nombre+ " " +this.apellidos+ " y tengo " +this.edad+ " anios");
+        return null;
     }
 
     @Override
+    /**
+     * Método que iguala un participante con otro
+     * @return true si la persona ya existe | false si la persona no coincide
+     */
     public boolean equals(Object o) {
         boolean personaExiste = false;
         if (this == o) return true;
