@@ -29,3 +29,16 @@ Para ir terminando creamos una nuevla clase llamada Equipo que implementará la 
 además tendrá sus propios métodos y atributos. 
 
 Para terminar creamos un main donde comprobaremos las pruebas necesarias para la realización del proyecto. Estas pruebas las realizaremos llamando a los métodos de las clases que hemos creado.
+
+### Descripción del funcionamiento general de la aplicación
+Esta aplicación nos permitirá almacenar y gestionar información acerca de los eventos, participantes y resultados 
+creados en las clases. Respecto a los participantes podremos añadir nuevos, comprobar si se existe... acerca de los eventos, podremos obtener el ganador
+de determinado evento a partir de sus tiempos, resultados... Lo que vamos a realizar con las pruebas de los métods serán:
+
+- La inscripción de un equipo y participante o su eliminación
+- Mostrar información acerca de ellos
+- Mostrar el ganador de los distintos eventos
+- Mostrar los equipos de mayor a menor según su puntuación
+
+Para ello vamos a crear objetos de distintos tipos, para mediante el llamamiento de métodos en una clase main,
+poder realizar las anteriores operaciones.
